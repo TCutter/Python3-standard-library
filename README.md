@@ -48,7 +48,7 @@ sys 模块可以让你访问解释器相关参数,比如模块搜索路径,解�
 这个模块一般情况下不用显示引用，只有当自定义的函数或者变量与内建函数或变量重名，而且仍然需要该内建类型时需要显示指明。
 
 <font color=#0099ff size=3 >Example 1-1 : myPrint.py</font>
-```
+```python
 import builtins # 此时需要手动导入
 
 def print(message):
@@ -77,7 +77,7 @@ except HTTPError as ex:
 ```
 
 输出：
-```
+```python
 <HTTPError for www.baidu.com ：404  Not Found!>
 ```
 
@@ -86,7 +86,7 @@ except HTTPError as ex:
 内建的 *open* 和 *file*(Python3已弃用) 函数提供创建、打开、编辑功能，而 *os* 模块提供了重命名和删除文件所需的函数.
 
 <font color=#0099ff size=3 >Example 1-3 : 使用 *os* 模块重命名和删除文件</font>
-```
+```python
 import os
 import myPrint
 
@@ -115,7 +115,7 @@ rename('sample.txt','index')
 ![文件结构](/images/file_hierachy.PNG)
 
 <font color=#0099ff size=3 >Example 1-4 : 使用 *os.listdir()* 函数列出给定目录下的所有目录和文件名</font>
-```
+```python
 import os
 from myPrint import print
 
@@ -124,7 +124,7 @@ for name in os.listdir():   # 参数为空时默认使用当前目录
 ```
 
 输出：
-```
+```python
 *****.git*****
 *****.vscode*****
 *****images*****
@@ -136,7 +136,7 @@ for name in os.listdir():   # 参数为空时默认使用当前目录
 ```
 
 <font color=#0099ff size=3 >Example 1-5 : 使用 *os.getcwd()* 和 *os.chdir()* 分别获取和改变当前工作目录</font>
-```
+```python
 import os
 
 path = os.getcwd()
@@ -154,7 +154,7 @@ print('3',path)
 ```
 
 输出：
-```
+```python
 1 C:\Users\xiao.guo\Desktop\Demo\GitHub\Python3-standard-library
 2 C:\Users\xiao.guo\Desktop\Demo\GitHub\Python3-standard-library\test
 3 C:\Users\xiao.guo\Desktop\Demo\GitHub\Python3-standard-library
@@ -162,7 +162,7 @@ print('3',path)
 
 
 <font color=#0099ff size=3 >Example 1-6 : 使用 *os.mkdir()* 和 *os.rmdir()* 分别创建和删除 *单* 个目录级 </font>
-```
+```python
 import os
 
 if os.path.exists('test2'):
@@ -172,7 +172,7 @@ else:
 ```
 
 <font color=#0099ff size=3 >Example 1-7 : 使用 *os.makedirs()* 和 *os.removedirs()* 分别创建和删除 *多* 个目录级 </font>
-```
+```python
 import os
 
 if os.path.exists('test2'):
@@ -190,7 +190,7 @@ else:
 
 As of Python 3.3, *os.fstat(fp)* is equivalent to *os.stat(path)*
 
-```
+```python
 import os
 import time
 
@@ -220,7 +220,7 @@ with open(filename,'rb') as fp:
 ```
 
 输出：
-```
+```python
 path =  os.stat('images/return_stat.PNG')
 os.stat: images/return_stat.PNG
 - size: 27822 bytes
@@ -243,7 +243,7 @@ os.fstat: 3
 ```
 
 <font color=#0099ff size=3 >Example 1-9 : 使用 os 模块修改文件的权限和时间戳</font>
-```
+```python
 import os
 import stat, time
 
@@ -269,7 +269,7 @@ print ("mtime", time.ctime(st_copy[stat.ST_MTIME]))
 ```
 
 输出：
-```
+```python
 original =>
 mode 0o666
 stat mode 33206
@@ -288,7 +288,7 @@ mtime Mon Apr  9 14:57:25 2018
 以后都会用 *subprocess* 模块代替
 
 <font color=#0099ff size=3 >Example 1-10: 使用 os.system(command)执行操作系统命令</font>
-```
+```python
 # system() 函数在当前进程下执行一个新命令, 并等待它完成
 import os
 
@@ -302,7 +302,7 @@ os.system(command)
 ```
 
 <font color=#0099ff size=3 >Example 1-11: 使用 os.exec* 函数使用新进程替换当前进程(或者说是"转到进程").</font>
-```
+```python
 import os
 
 program = 'python'
@@ -314,7 +314,7 @@ print('456')    # 不会被执行
 
 <font color=#0099ff size=3 >Example 1-12: 使用 os.spawnv()调用其他程序 (Windows和Unix通用)</font>
 
-```
+```python
 # Windows下无 os.fork()
 
 import os
@@ -358,7 +358,7 @@ print("goodbye")
 ```
 
 输出：
-```
+```python
 AttributeError : module 'os' has no attribute 'spawnvp'
 os.error : [Errno 2] No such file or directory
 *****123*****
@@ -371,7 +371,7 @@ goodbye
 *os.path* 模块包含了许多与平台无关的处理长文件名的函数. 也就是说, 你不需要处理前后斜杠, 冒号等.
 
 <font color=#0099ff size=3 >Example 1-13: 使用 *os.path* 模块处理文件名</font>
-```
+```python
 import os.path as path
 import os
 
@@ -392,7 +392,7 @@ print(path.exists(os.getcwd() + path.join(dirname,basename)))
 ```
 
 输出：
-```
+```python
 split => ('\\images', 'in.png')
 splitext => ('\\images\\in', '.png')
 dirname => \images
@@ -402,7 +402,7 @@ True
 ```
 
 <font color=#0099ff size=3 >Example 1-14: 使用 *os.path* 模块检查文件名的特征</font>
-```
+```python
 import os
 
 FILES = (
@@ -432,7 +432,7 @@ for file in FILES:
 ```
 
 输出：
-```
+```python
 . =>  EXISTS  ISDIR
 / =>  EXISTS  ISABS   ISDIR
 file =>
